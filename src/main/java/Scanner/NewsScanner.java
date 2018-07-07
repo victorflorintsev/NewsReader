@@ -1,14 +1,25 @@
 package Scanner;
 
 import NewsSources.NewsSource;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.io.InputStream;
+import java.net.URL;
 
 public class NewsScanner {
-    public NewsScanner(NewsSource newsSource, String dataFilepath) throws Exception {
+    protected WebDriver webDriver;
+    protected NewsSource newsSource;
+
+    public NewsScanner(NewsSource nSource, String dataFilepath) throws Exception {
+        newsSource = nSource;
         InputStream in = NewsScanner.class.getResourceAsStream(dataFilepath);
         if ( in == null )
             throw new NewsScannerSetupException("Failed to find data CSV");
+
+        webDriver = new ChromeDriver();
+
+        webDriver.navigate().to(new URL(newsSource.getHomePage()));
     }
 
     private class NewsScannerSetupException extends NewsScannerException {

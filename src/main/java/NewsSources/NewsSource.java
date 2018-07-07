@@ -6,4 +6,8 @@ public class NewsSource {
     String homePageURL = "";
     String nextPageXpath = "";
     String prevPageXpath = "";
+
+    public String getHomePage() {
+        return homePageURL;
+    }
 }
