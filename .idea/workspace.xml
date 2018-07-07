@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bdc79fb-72fe-42f9-b446-40730ea200cc" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Scanner/PageArticleScanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Scanner/NewsScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Scanner/NewsScanner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/NewsScanTestSuite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/NewsScanTestSuite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -48,8 +45,8 @@
       <file leaf-file-name="NewsScanner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Scanner/NewsScanner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="166">
-              <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            <state relative-caret-position="-109">
+              <caret line="8" column="77" lean-forward="true" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#511#512#0" expanded="true" />
@@ -140,6 +137,11 @@
             <path>
               <item name="NewsReader" type="b2602c69:ProjectViewProjectNode" />
               <item name="NewsReader" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NewsReader" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NewsReader" type="462c0819:PsiDirectoryNode" />
+              <item name=".idea" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NewsReader" type="b2602c69:ProjectViewProjectNode" />
@@ -326,7 +328,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1530992311925</updated>
-      <workItem from="1530992316555" duration="4053000" />
+      <workItem from="1530992316555" duration="4333000" />
     </task>
     <task id="LOCAL-00001" summary="first commit and push">
       <created>1531002008896</created>
@@ -335,7 +337,14 @@
       <option name="project" value="LOCAL" />
       <updated>1531002008897</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updated exception">
+      <created>1531003130400</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1531003130400</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -344,11 +353,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4053000" />
+    <option name="totallyTimeSpent" value="4333000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1292" height="692" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -388,7 +396,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="first commit and push" />
-    <option name="LAST_COMMIT_MESSAGE" value="first commit and push" />
+    <MESSAGE value="updated exception" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated exception" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/resources/data.csv">
@@ -440,8 +449,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Scanner/NewsScanner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        <state relative-caret-position="-109">
+          <caret line="8" column="77" lean-forward="true" selection-start-line="8" selection-start-column="77" selection-end-line="8" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#511#512#0" expanded="true" />
