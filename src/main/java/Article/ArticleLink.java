@@ -8,4 +8,8 @@ public class ArticleLink {
         this.title = title;
         this.url = link;
     }
+
+    public String getURL() {
+        return url;
+    }
 }

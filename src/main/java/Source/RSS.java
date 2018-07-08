@@ -31,4 +31,8 @@ public class RSS implements SourceInterface {
         }
         return output;
     }
+
+    public boolean hasLinks() {
+        return i < entryList.size();
+    }
 }

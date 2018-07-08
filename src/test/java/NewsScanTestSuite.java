@@ -1,4 +1,6 @@
 import Source.RSS;
+import Source.SourceInterface;
+import SourceReader.*;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -9,6 +11,7 @@ public class NewsScanTestSuite {
 
     @Test
     public void Test1() throws Exception {
-        new RSS("http://rss.cnn.com/rss/cnn_topstories.rss");
+        RSS cnn = new RSS("http://rss.cnn.com/rss/cnn_topstories.rss");
+        SourceReader sourceReader = new DumbSourceReader(cnn, 10);
     }
 }
