@@ -1,3 +1,4 @@
+import Readers.BoilerpipeReader;
 import Readers.CNNReader;
 import Readers.Reader;
 import Sources.ArticleLink;
@@ -12,6 +13,23 @@ public class NewsScanTestSuite {
     String defaultCnnNewsStoryUrl = "https://www.cnn.com/2018/07/10/politics/ustr-new-china-tariffs-trump/index.html";
 
     @Test
+    public void routeRssToBoilerpipeReaders() throws Exception {
+        int sizeToTest = 10;
+        RSS cnn = new RSS(cnnRssUrl);
+
+        List<ArticleLink> articleLinkList = cnn.nextLinks(sizeToTest);
+
+        String totalCorpus = "";
+        for (ArticleLink articleLink : articleLinkList) {
+            System.out.println("Opening ArticleLink: " + articleLink); // toDo: implement new logger
+            Reader reader = new BoilerpipeReader(articleLink.getLink()); // fails because the xpath handling of CNNReader is super primitive. Need to add exception handling to it another day.
+            totalCorpus += reader.getCorpus();
+        }
+        System.out.println(totalCorpus);
+        assert !totalCorpus.equals("");
+    }
+
+    @Test
     public void routeRssToCnnReaders() throws Exception {
         int sizeToTest = 10;
         RSS cnn = new RSS(cnnRssUrl);
@@ -24,6 +42,7 @@ public class NewsScanTestSuite {
             Reader reader = new CNNReader(articleLink.getLink()); // fails because the xpath handling of CNNReader is super primitive. Need to add exception handling to it another day.
             totalCorpus += reader.getCorpus();
         }
+        System.out.println(totalCorpus);
         assert !totalCorpus.equals("");
     }
 
