@@ -1,12 +1,29 @@
 package Readers;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.net.URL;
 
 public class Reader {
 
-    Reader(URL url) {
+    protected String corpus; // the output string of the reader
+    protected boolean doneProcessing = false;
+
+    public Reader(URL url) {
+        throw new NotImplementedException();
         // toDo: implement
     }
 
-    String getCorpus();
+    public void process() throws Exception {
+        throw new NotImplementedException();
+        // toDo: implement
+    }
+
+    public boolean isDoneProcessing() {
+        return doneProcessing;
+    }
+
+    public String getCorpus() {
+        return corpus;
+    }
 }
