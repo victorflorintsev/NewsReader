@@ -18,6 +18,5 @@ public class CNNReader extends SeleniumReader {
         articleLinks = driver.findElements(By.xpath("//div[@itemprop='articleBody']/section/div[@class = 'l-container']"));
 
         System.out.println(articleLinks.get(0).getText());
-
     }
 }

@@ -12,6 +12,22 @@ public class NewsScanTestSuite {
     String defaultCnnNewsStoryUrl = "https://www.cnn.com/2018/07/10/politics/ustr-new-china-tariffs-trump/index.html";
 
     @Test
+    public void routeRssToCnnReaders() throws Exception {
+        int sizeToTest = 10;
+        RSS cnn = new RSS(cnnRssUrl);
+
+        List<ArticleLink> articleLinkList = cnn.nextLinks(sizeToTest);
+
+        String totalCorpus = "";
+        for (ArticleLink articleLink : articleLinkList) {
+            System.out.println("Opening ArticleLink: " + articleLink);
+            Reader reader = new CNNReader(articleLink.getLink());
+            totalCorpus += reader.getCorpus();
+        }
+        assert !totalCorpus.equals("");
+    }
+
+    @Test
     public void testCNNReader() throws Exception {
         Reader reader = new CNNReader(new URL(defaultCnnNewsStoryUrl));
     }

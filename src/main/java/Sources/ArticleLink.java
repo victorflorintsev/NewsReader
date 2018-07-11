@@ -27,6 +27,12 @@ public class ArticleLink {
         this.link = link;
     }
 
+    @Override
+    public String toString() {
+        return "title: '" + title + "'" + " | " +
+                "link: '" + link + "'";
+    }
+
     URL link;
 
 }
