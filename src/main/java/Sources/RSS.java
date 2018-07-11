@@ -26,6 +26,7 @@ public class RSS implements Source {
         for (int j = i; j < size; j++) {
             entry = entryList.get(j);
             cur = new ArticleLink(entry.getTitle(), new URL(entry.getLink()));
+            output.add(cur);
             i++;
         }
         return output;
