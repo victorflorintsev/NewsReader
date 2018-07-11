@@ -1,6 +1,5 @@
-package Source;
+package Sources;
 
-import Article.ArticleLink;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
@@ -10,7 +9,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RSS implements SourceInterface {
+public class RSS implements Source {
     List<SyndEntry> entryList = new ArrayList<SyndEntry>();
     int i = 0;
 
@@ -20,13 +19,13 @@ public class RSS implements SourceInterface {
         entryList.addAll(list);
     }
 
-    public List<ArticleLink> nextLinks(int size) {
+    public List<ArticleLink> nextLinks(int size) throws Exception {
         List<ArticleLink> output = new ArrayList<ArticleLink>();
         ArticleLink cur;
         SyndEntry entry;
         for (int j = i; j < size; j++) {
             entry = entryList.get(j);
-            cur = new ArticleLink(entry.getTitle(), entry.getLink());
+            cur = new ArticleLink(entry.getTitle(), new URL(entry.getLink()));
             i++;
         }
         return output;

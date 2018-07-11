@@ -6,12 +6,12 @@ import java.net.URL;
 
 public class Reader {
 
+    protected URL url;
     protected String corpus; // the output string of the reader
     protected boolean doneProcessing = false;
 
     public Reader(URL url) {
-        throw new NotImplementedException();
-        // toDo: implement
+        this.url = url;
     }
 
     public boolean process() throws Exception {

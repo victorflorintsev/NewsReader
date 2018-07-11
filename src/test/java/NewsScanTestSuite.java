@@ -1,17 +1,19 @@
-import Source.RSS;
-import Source.SourceInterface;
-import SourceReader.*;
-import org.junit.jupiter.api.Test;
+import Readers.CNNReader;
+import Readers.Reader;
+import Sources.RSS;
+import org.testng.annotations.Test;
 
-import java.io.File;
-
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import java.net.URL;
 
 public class NewsScanTestSuite {
 
     @Test
-    public void Test1() throws Exception {
+    public void testRSS() throws Exception {
         RSS cnn = new RSS("http://rss.cnn.com/rss/cnn_topstories.rss");
-        SourceReader sourceReader = new DumbSourceReader(cnn, 10);
+    }
+
+    @Test
+    public void testCNNReader() throws Exception {
+        Reader reader = new CNNReader(new URL("https://www.cnn.com/2018/07/10/politics/ustr-new-china-tariffs-trump/index.html"));
     }
 }
