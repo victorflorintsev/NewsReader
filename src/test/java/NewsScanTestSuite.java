@@ -20,8 +20,8 @@ public class NewsScanTestSuite {
 
         String totalCorpus = "";
         for (ArticleLink articleLink : articleLinkList) {
-            System.out.println("Opening ArticleLink: " + articleLink);
-            Reader reader = new CNNReader(articleLink.getLink());
+            System.out.println("Opening ArticleLink: " + articleLink); // toDo: implement new logger
+            Reader reader = new CNNReader(articleLink.getLink()); // fails because the xpath handling of CNNReader is super primitive. Need to add exception handling to it another day.
             totalCorpus += reader.getCorpus();
         }
         assert !totalCorpus.equals("");
