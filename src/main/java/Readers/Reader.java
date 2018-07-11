@@ -14,7 +14,7 @@ public class Reader {
         // toDo: implement
     }
 
-    public void process() throws Exception {
+    public boolean process() throws Exception {
         throw new NotImplementedException();
         // toDo: implement
     }
