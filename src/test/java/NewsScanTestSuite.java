@@ -1,9 +1,11 @@
 import Readers.CNNReader;
 import Readers.Reader;
+import Sources.ArticleLink;
 import Sources.RSS;
 import org.testng.annotations.Test;
 
 import java.net.URL;
+import java.util.List;
 
 public class NewsScanTestSuite {
 
