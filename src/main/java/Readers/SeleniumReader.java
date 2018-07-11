@@ -19,11 +19,9 @@ public class SeleniumReader extends Reader {
         super(url);
 
         driver = new ChromeDriver();
-        // toDO: code to instantiate the webdriver needs to be done
+        // toDo: code to instantiate the webdriver needs to be done
 
         driver.navigate().to(url);
-
-        process();
     }
 
     @Override
