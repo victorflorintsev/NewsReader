@@ -8,14 +8,38 @@ import java.net.URL;
 import java.util.List;
 
 public class NewsScanTestSuite {
-
-    @Test
-    public void testRSS() throws Exception {
-        RSS cnn = new RSS("http://rss.cnn.com/rss/cnn_topstories.rss");
-    }
+    String cnnRssUrl = "http://rss.cnn.com/rss/cnn_topstories.rss";
+    String defaultCnnNewsStoryUrl = "https://www.cnn.com/2018/07/10/politics/ustr-new-china-tariffs-trump/index.html";
 
     @Test
     public void testCNNReader() throws Exception {
-        Reader reader = new CNNReader(new URL("https://www.cnn.com/2018/07/10/politics/ustr-new-china-tariffs-trump/index.html"));
+        Reader reader = new CNNReader(new URL(defaultCnnNewsStoryUrl));
     }
+
+    @Test
+    public void rssHasLinks() throws Exception {
+        RSS cnn = new RSS(cnnRssUrl);
+
+        assert cnn.hasLinks() : "CNN RSS has no links";
+    }
+
+    @Test
+    public void rssReturnsList() throws Exception {
+        RSS cnn = new RSS(cnnRssUrl);
+
+        List<ArticleLink> articleLinkList = cnn.nextLinks(10);
+
+        assert !articleLinkList.isEmpty() : "ArticleLink list is empty";
+    }
+
+    @Test (dependsOnMethods = "rssReturnsList")
+    public void rssReturnsCorrectLengthList() throws Exception {
+        int sizeToTest = 10;
+        RSS cnn = new RSS(cnnRssUrl);
+
+        List<ArticleLink> articleLinkList = cnn.nextLinks(sizeToTest);
+
+        assert articleLinkList.size() == sizeToTest;
+        }
+
 }
