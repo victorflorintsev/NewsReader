@@ -1,3 +1,4 @@
+import Buffers.CorpusBuffer;
 import Readers.BoilerpipeReader;
 import Readers.CNNReader;
 import Readers.Reader;
@@ -13,8 +14,17 @@ public class NewsScanTestSuite {
     String defaultCnnNewsStoryUrl = "https://www.cnn.com/2018/07/10/politics/ustr-new-china-tariffs-trump/index.html";
 
     @Test
+    public void sandbox() throws Exception {
+        RSS cnn = new RSS(cnnRssUrl);
+
+        CorpusBuffer buffer = new CorpusBuffer(cnn);
+
+
+    }
+
+    @Test
     public void routeRssToBoilerpipeReaders() throws Exception {
-        int sizeToTest = 10;
+        int sizeToTest = 68;
         RSS cnn = new RSS(cnnRssUrl);
 
         List<ArticleLink> articleLinkList = cnn.nextLinks(sizeToTest);
