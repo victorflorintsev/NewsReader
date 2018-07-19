@@ -2,11 +2,11 @@ package ConcurrentClasses;
 
 import Sources.Source;
 
-public class CorpusTestRunnable implements Runnable {
+public class SourceTestRunnable implements Runnable {
 
     private final Source source;
 
-    public CorpusTestRunnable(Source source) {this.source = source;}
+    public SourceTestRunnable(Source source) {this.source = source;}
 
     public void run() {
         while (source.hasLinks()) {

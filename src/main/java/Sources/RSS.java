@@ -14,7 +14,12 @@ public class RSS implements Source {
     int i = 0;
 
     public RSS(String URL) throws Exception {
-        SyndFeed feed = new SyndFeedInput().build(new XmlReader(new URL(URL)));
+        SyndFeed feed;
+        try {feed = new SyndFeedInput().build(new XmlReader(new URL(URL)));}
+        catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
         List list = feed.getEntries();
         entryList.addAll(list);
     }
