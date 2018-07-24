@@ -1,5 +1,6 @@
 import ConcurrentClasses.SourceTestRunnable;
 import Sources.RSS;
+import Sources.Source;
 import org.testng.annotations.Test;
 
 import java.util.ArrayList;
@@ -15,6 +16,14 @@ public class ConcurrencyTestSuite {
     String defaultCnnNewsStoryUrl = "https://www.cnn.com/2018/07/10/politics/ustr-new-china-tariffs-trump/index.html";
 
     @Test
+    public void feederTest() throws Exception {
+        Source source = new RSS(cnnRssUrl);
+        Feeder feeder = new Feeder(source);
+        System.out.println(feeder.getAllCorpus(7));
+    }
+
+
+    @Test
     public void oneSourceTestRunnable() throws Exception {
        List<Thread> threads = new ArrayList<Thread>();
 
@@ -24,7 +33,7 @@ public class ConcurrencyTestSuite {
     }
 
     @Test
-    public void fiveSourceTestRunnables() throws Exception {
+    public void fiveDifferentSourceTestRunnables() throws Exception {
         List<Thread> threads = new ArrayList<Thread>();
 
         threads.add(new Thread(new SourceTestRunnable(new RSS(cnnRssUrl))));
@@ -32,6 +41,22 @@ public class ConcurrencyTestSuite {
         threads.add(new Thread(new SourceTestRunnable(new RSS(bbcRssUrl))));
         threads.add(new Thread(new SourceTestRunnable(new RSS(fnRssUrl))));
         threads.add(new Thread(new SourceTestRunnable(new RSS(natureRssUrl))));
+
+
+        for (Thread thread : threads) {
+            thread.start();
+        }
+    }
+
+    @Test
+    public void fiveSameSourceTestRunnables() throws Exception {
+        List<Thread> threads = new ArrayList<Thread>();
+
+        threads.add(new Thread(new SourceTestRunnable(new RSS(cnnRssUrl))));
+        threads.add(new Thread(new SourceTestRunnable(new RSS(cnnRssUrl))));
+        threads.add(new Thread(new SourceTestRunnable(new RSS(cnnRssUrl))));
+        threads.add(new Thread(new SourceTestRunnable(new RSS(cnnRssUrl))));
+        threads.add(new Thread(new SourceTestRunnable(new RSS(cnnRssUrl))));
 
 
         for (Thread thread : threads) {

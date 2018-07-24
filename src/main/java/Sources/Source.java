@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public interface Source {
-    public List<ArticleLink> nextLinks(int size) throws Exception;
+    public ArticleLink nextLink() throws Exception;
 
     public boolean hasLinks();
 }

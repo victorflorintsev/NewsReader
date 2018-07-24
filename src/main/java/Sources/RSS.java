@@ -24,17 +24,12 @@ public class RSS implements Source {
         entryList.addAll(list);
     }
 
-    public List<ArticleLink> nextLinks(int size) throws Exception {
-        List<ArticleLink> output = new ArrayList<ArticleLink>();
+    public ArticleLink nextLink() throws Exception {
         ArticleLink cur;
         SyndEntry entry;
-        for (int j = i; j < size; j++) {
-            entry = entryList.get(j);
-            cur = new ArticleLink(entry.getTitle(), new URL(entry.getLink()));
-            output.add(cur);
-            i++;
-        }
-        return output;
+        entry = entryList.get(i++);
+        cur = new ArticleLink(entry.getTitle(), new URL(entry.getLink()));
+        return cur;
     }
 
     public boolean hasLinks() {
