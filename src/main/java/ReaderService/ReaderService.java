@@ -16,18 +16,20 @@ public class ReaderService implements Runnable {
     ExecutorService executorService;
     Queue<LinkModel> linkModelQueue;
     Queue<Future<String>> futureQueue;
+    int batchSize;
+    int poolSize;
 
     public ReaderService(int poolSize, int batchSize) {
         executorService = Executors.newFixedThreadPool(poolSize);
-
-        linkModelQueue = DatabaseQueryService.getInstance().getNextLinks(batchSize);
-
         futureQueue = new ArrayBlockingQueue<>(poolSize*2, true);
+        this.batchSize = batchSize;
+        this.poolSize = poolSize;
     }
 
     @Override
     public void run() {
         for (;;) {
+            linkModelQueue = DatabaseQueryService.getInstance().getNextLinks(batchSize);
             for (LinkModel link : linkModelQueue) {
                 try {
                     BoilerpipeReader task = new BoilerpipeReader(new URL(link.getLink()));
