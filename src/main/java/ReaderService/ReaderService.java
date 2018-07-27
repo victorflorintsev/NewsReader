@@ -12,27 +12,34 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class ReaderService {
+public class ReaderService implements Runnable {
     ExecutorService executorService;
+    Queue<LinkModel> linkModelQueue;
+    Queue<Future<String>> futureQueue;
 
     public ReaderService(int poolSize, int batchSize) {
         executorService = Executors.newFixedThreadPool(poolSize);
 
-        Queue<LinkModel> linkModelQueue = DatabaseQueryService.getInstance().getNextLinks(batchSize);
+        linkModelQueue = DatabaseQueryService.getInstance().getNextLinks(batchSize);
 
-        Queue<Future<String>> futureQueue = new ArrayBlockingQueue<>(poolSize, true);
+        futureQueue = new ArrayBlockingQueue<>(poolSize*2, true);
+    }
 
-        for (LinkModel link: linkModelQueue) {
+    @Override
+    public void run() {
+        for (;;) {
+            for (LinkModel link : linkModelQueue) {
+                try {
+                    BoilerpipeReader task = new BoilerpipeReader(new URL(link.getLink()));
 
-            try {
-                BoilerpipeReader task = new BoilerpipeReader(new URL(link.getLink()));
+                    Future<String> submit = executorService.submit(task);
 
-                Future<String> submit = executorService.submit(task);
-
-                futureQueue.add(submit);
-            } catch (Exception e) {
-                e.printStackTrace();
+                    futureQueue.add(submit);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
+            break;
         }
     }
 }
