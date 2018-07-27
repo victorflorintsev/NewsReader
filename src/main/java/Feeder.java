@@ -5,6 +5,7 @@ import Sources.Source;
 import java.io.BufferedReader;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.*;
@@ -18,7 +19,7 @@ public class Feeder {
 
     public String getAllCorpus(int poolSize) {
         ExecutorService executorService = Executors.newFixedThreadPool(poolSize);
-        Queue<Future<String>> futureQueue = new LinkedBlockingQueue<>();
+        Queue<Future<String>> futureQueue = new LinkedList<>();
 
         int linksProcessed = 0;
         while (source.hasLinks()) {
@@ -55,7 +56,7 @@ public class Feeder {
             }
             if (futureQueue.isEmpty()) doneRunning = true;
             else {
-                System.out.println("not done yet");
+                //System.out.println("not done yet");
             }
         }
         System.out.println("Done, out: " + out);
